@@ -10,7 +10,7 @@ const bot = new telegramBot(TOKEN, {polling: true});
 
 const schedule = require('node-schedule');
 
-const job = schedule.scheduleJob('25 13 * * *', function () {
+const job = schedule.scheduleJob('27 13 * * *', function () {
     const message = `📅Day ${currentDay}`;
     sendMessage(message);
     currentDay++;
