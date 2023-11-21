@@ -4,16 +4,16 @@ require('dotenv').config()
 
 const TOKEN = process.env.TOKEN;
 
+let currentDay = 15;
+
 const bot = new telegramBot(TOKEN, {polling: true});
 
 const schedule = require('node-schedule');
 
-const rule = new schedule.RecurrenceRule();
-rule.hour = 14;
-rule.minute = 11;
-rule.second = 35;
-
-const dailyMessageJob = schedule.scheduleJob(rule, sendMessage);
+const job = schedule.scheduleJob('25 13 * * *', function () {
+    const message = 'Good morning! This is your daily message.';
+    sendMessage(message);
+});
 
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
@@ -21,8 +21,8 @@ bot.on('message', (msg) => {
     console.log(msg.text)
 })
 
-function sendMessage() {
-    let message = 'Day 1';
+function sendMessage(message) {
     bot.sendMessage(743713648, message);
 }
+
 
