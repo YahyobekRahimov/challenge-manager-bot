@@ -19,8 +19,7 @@ const job = schedule.scheduleJob('27 13 * * *', function () {
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     bot.sendMessage(chatId, `Received your message: ${msg.text}`);
-    console.log(msg.text);
-    console.log(msg);
+    bot.sendMessage(chatId, msg);
 })
 
 function sendMessage(message) {
