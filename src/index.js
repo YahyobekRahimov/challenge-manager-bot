@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const TOKEN = process.env.TOKEN;
 
-let currentDay = 16;
+let currentDay = 17;
 
 const bot = new telegramBot(TOKEN, {polling: true});
 
